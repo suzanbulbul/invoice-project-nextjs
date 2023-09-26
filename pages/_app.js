@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import Head from 'next/head';
 
 //Components
-import Layout from '../components/Layout';
+import Layout from '../components/layout';
 
 //Styles
 import '../styles/scss/style.scss'
