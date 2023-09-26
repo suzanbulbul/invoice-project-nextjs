@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+// Firebase
+import { sendInvoiceToFirebase } from '../firebase/firebase';
+
 const Index = () => {
   const [invoiceData, setInvoiceData] = useState({
     customerName: '',
@@ -24,9 +27,16 @@ const Index = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => { 
     e.preventDefault();
     console.log('Gönderilen Fatura:', invoiceData);
+
+    try {
+      await sendInvoiceToFirebase(invoiceData);
+      console.log('Fatura başarıyla Firebase Firestore\'a gönderildi');
+    } catch (error) {
+      console.error('Fatura gönderilirken hata oluştu:', error);
+    }
   };
 
   return (
