@@ -1,6 +1,8 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
 
-@import './global.module.scss';
+// Utilities
+@import './utilities/global.module.scss';
+@import './utilities/dark-mode.module.scss';
 
 //Components
 
