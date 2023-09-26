@@ -10,6 +10,7 @@ const Index = () => {
     dueDate: '',
     lineItems: [],
     notes: '',
+    email: '',
   });
 
   const addLineItem = () => {
@@ -73,6 +74,17 @@ const Index = () => {
             id="dueDate"
             value={invoiceData.dueDate}
             onChange={(e) => setInvoiceData({ ...invoiceData, dueDate: e.target.value })}
+            required
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="email" className="form-label">Email Adresi:</label>
+          <input
+            type="email"
+            className="form-control"
+            id="email"
+            value={invoiceData.email}
+            onChange={(e) => setInvoiceData({ ...invoiceData, email: e.target.value })}
             required
           />
         </div>

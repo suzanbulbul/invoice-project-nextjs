@@ -1,6 +1,6 @@
 
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc  } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
 
 const firebaseConfig = {
    apiKey: process.env.REACT_APP_API_KEY,
@@ -14,7 +14,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-
+// Craete a new invoice
 export const sendInvoiceToFirebase = async (invoiceData) => {
   try {
     const invoicesCollection = collection(db, 'invoices');
@@ -25,6 +25,19 @@ export const sendInvoiceToFirebase = async (invoiceData) => {
     console.error('Fatura eklenirken hata oluştu:', error);
     throw error;
   }
+};
+
+// Get all invoices
+export const getInvoices = async () => {
+  const invoicesCollectionRef = collection(db, "invoices");
+  const querySnapshot = await getDocs(invoicesCollectionRef);
+
+  const invoiceList = [];
+  querySnapshot.forEach((doc) => {
+    invoiceList.push({ id: doc.id, ...doc.data() });
+  });
+
+  return invoiceList;
 };
 
 export default app;
