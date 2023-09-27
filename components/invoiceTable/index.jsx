@@ -8,6 +8,7 @@ import  dateFormat  from "../../utilities/helpers/dateFormat";
 //Lottie 
 import animationData from "../../public/animations/empty_list_animation.json"; 
 
+
 const InvoiceTable = () => {
   const invoices = []
 

@@ -5,6 +5,7 @@ import { getInvoices } from "../firebase/firebase";
 
 // Components
 import InvoiceTable from "../components/invoiceTable";
+import Loading from "../components/loading";
 
 const InvoiceList = () => {
   const [invoices, setInvoices] = useState([]);
@@ -27,7 +28,7 @@ const InvoiceList = () => {
     <div className="container mt-5">
       <h2 className="title">Fatura Listesi</h2>
       {loading ? (
-        <div>Loading...</div>
+        <Loading />
       ) : (
         <InvoiceTable invoices={invoices} /> 
       )}
