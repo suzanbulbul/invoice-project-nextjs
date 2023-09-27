@@ -1,9 +1,15 @@
 import React from "react";
+import Lottie from "lottie-react";
+
 
 // Helpers
 import  dateFormat  from "../../utilities/helpers/dateFormat";
 
-const InvoiceTable = ({ invoices }) => {
+//Lottie 
+import animationData from "../../public/animations/empty_list_animation.json"; 
+
+const InvoiceTable = () => {
+  const invoices = []
 
   const getStatusColor = (status) => {
     if (status === "paid") {
@@ -15,6 +21,15 @@ const InvoiceTable = ({ invoices }) => {
     }else{
       return "black";
     }
+  }
+
+  if (invoices.length === 0) {
+    return (
+      <div className="invoice-table-empty">
+        <h1 className="desc">Fatura Listesinde fatura bulunamamaktadır.</h1>
+        <Lottie className="animation" animationData={animationData} />
+      </div>
+    );
   }
   
   return (

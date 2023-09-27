@@ -28,6 +28,15 @@
       #status{
         font-weight: 700;
       }
+
+    &-empty{
+      .animation{
+        position: relative;
+
+        max-width: 800px;
+        margin: 0 auto;
+      }
+    }  
  
 }
   
