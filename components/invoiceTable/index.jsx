@@ -37,7 +37,6 @@ const InvoiceTable = ({invoices}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     toast.success("Mail başarıyla gönderildi.");
   }
   

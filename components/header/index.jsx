@@ -8,7 +8,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 
 const Header = () => {
   const [darkMode, setDarkMode] = useState(false);
-  const [language, setLanguage] = useState('en'); // Dil seçeneği
+  const [language, setLanguage] = useState('en'); 
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   useEffect(() => {
@@ -83,7 +83,6 @@ const Header = () => {
                   Invoice List
                 </Link>
               </li>
-              {/* Diğer menü öğeleri buraya ekleyin */}
             </ul>
             <div className="d-flex justify-content-between  align-items-center item-area">
               <div className="dark-mode-toggle">
