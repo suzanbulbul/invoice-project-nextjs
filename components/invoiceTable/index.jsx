@@ -1,5 +1,8 @@
 import React from "react";
 
+// Helpers
+import  dateFormat  from "../../utilities/helpers/dateFormat";
+
 const InvoiceTable = ({ invoices }) => {
 
   const getStatusColor = (status) => {
@@ -30,8 +33,8 @@ const InvoiceTable = ({ invoices }) => {
             {invoices.map((invoice, index) => (
               <tr key={index}>
                 <td>{invoice.customerName}</td>
-                <td>{invoice.invoiceDate}</td>
-                <td>{invoice.dueDate}</td>
+                <td>{dateFormat(invoice.invoiceDate)}</td>
+                <td>{dateFormat(invoice.dueDate)}</td>
                 <td id="status" style={{ color: getStatusColor(invoice.paymentStatus) }}>
                   {invoice.paymentStatus ? invoice.paymentStatus : "-"}
                 </td>

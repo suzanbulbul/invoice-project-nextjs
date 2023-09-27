@@ -66,7 +66,7 @@ const InvoiceForm  = () => {
       lineItems: [],
       notes: '',
       email: '',
-      paymentStatus: '', // Bu satırı ekleyin
+      paymentStatus: '', 
     })); 
   }
 
