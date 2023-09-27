@@ -34,7 +34,7 @@ const Header = () => {
   };
 
   return (
-    <header>
+    <header >
       <nav className={`navbar navbar-expand-lg ${darkMode & "bg-dark"}`}>
         <div className="container container-fluid p-2">
           <div className="d-flex align-items-center">

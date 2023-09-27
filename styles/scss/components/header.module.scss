@@ -1,4 +1,8 @@
 header{
+  position: fixed;
+  z-index: 99999;
+  width: 100%;
+  background-color: $ivory ;
     .dark-mode-toggle {
         margin-right: 20px;
         input[type="checkbox"] {

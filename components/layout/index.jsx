@@ -4,9 +4,9 @@ import Header from '../header';
 const Layout = ({ children }) => {
 
   return (
-    <div className='layout'>
+    <div>
       <Header />
-      <div>
+      <div> 
         {children}
       </div>
     </div>

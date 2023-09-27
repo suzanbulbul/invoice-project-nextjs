@@ -26,7 +26,7 @@ const InvoiceList = () => {
 
 
   return (
-    <div className="container mt-5">
+    <div className="container invoiceList">
       <div className="d-flex justify-content-between align-items-start">
          <h2 className="title">Fatura Listesi</h2>
         <Link href="/" className="secondaryButton">Fatura Ekle</Link>

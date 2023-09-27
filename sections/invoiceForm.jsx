@@ -73,209 +73,219 @@ const InvoiceForm  = () => {
     <div className="invoiceForm">
       <div className="invoiceForm-container">
         <div className="invoiceForm-content">
-        <h2 className="title">Fatura Oluştur</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="input">
-            <label htmlFor="customerName" className="form-label label">
-              Müşteri Adı:
-            </label>
-            <input
-              type="text"
-              id="customerName"
-              placeholder="Bu alanı doldurun."
-              value={invoiceData.customerName}
-              onChange={(e) =>
-                setInvoiceData({ ...invoiceData, customerName: e.target.value })
-              }
-              required
-            />
-          </div>
-          <div className="input">
-            <label htmlFor="email" className="form-label label">
-              Email Adresi:
-            </label>
-            <input
-              type="email"
-              id="email"
-              placeholder="Bu alanı doldurun."
-              value={invoiceData.email}
-              onChange={(e) =>
-                setInvoiceData({ ...invoiceData, email: e.target.value })
-              }
-              required
-            />
-          </div>
-
-          <div className="d-flex justify-content-between align-items-center mb-3">
-            <div className="input me-2 w-100">
-              <label htmlFor="invoiceDate" className="form-label label">
-                Fatura Tarihi:
+          <h2 className="title">Fatura Oluştur</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="input">
+              <label htmlFor="customerName" className="form-label label">
+                Müşteri Adı:
               </label>
               <input
-                type="date"
-                id="invoiceDate"
-                value={invoiceData.invoiceDate}
+                type="text"
+                id="customerName"
+                placeholder="Bu alanı doldurun."
+                value={invoiceData.customerName}
                 onChange={(e) =>
                   setInvoiceData({
                     ...invoiceData,
-                    invoiceDate: e.target.value,
+                    customerName: e.target.value,
                   })
                 }
                 required
               />
             </div>
-            <div className='col-md-6'>
-                <div className="input ms-2 w-100">
-              <label htmlFor="dueDate" className="form-label label">
-                Son Ödeme Tarihi:
+            <div className="input">
+              <label htmlFor="email" className="form-label label">
+                Email Adresi:
               </label>
               <input
-                type="date"
-                id="dueDate"
-                value={invoiceData.dueDate}
+                type="email"
+                id="email"
+                placeholder="Bu alanı doldurun."
+                value={invoiceData.email}
                 onChange={(e) =>
-                  setInvoiceData({ ...invoiceData, dueDate: e.target.value })
+                  setInvoiceData({ ...invoiceData, email: e.target.value })
                 }
                 required
               />
             </div>
-            </div>
-          
-          </div>
 
-          <div className="mb-3">
-            <h5 className="subtitle mb-2">Extra Öğe</h5>
-            {invoiceData.lineItems && (
-              <div>
-                {invoiceData.lineItems.map((item, index) => (
-                  <ul className='mb-3' key={index}>
-                     <li className="d-flex justify-content-between align-items-center my-3">
-                       <div className="form-control border-0 label">
-                        <b>Desc:</b> {item.extraItemDesc}
-                      </div>
-                      <div className="form-control border-0 ps-0 label">
-                        <b>Amount:</b> {item.extraItemAmount}
-                      </div>
-                      <div className="form-control border-0 ps-0 label">
-                        <b>Price:</b> {item.extraItemPrice}
-                      </div>
-                    </li>
-                  </ul>
-                ))}
+            <div className="d-flex justify-content-between align-items-center mb-3">
+              <div className="input me-2 w-100">
+                <label htmlFor="invoiceDate" className="form-label label">
+                  Fatura Tarihi:
+                </label>
+                <input
+                  type="date"
+                  id="invoiceDate"
+                  value={invoiceData.invoiceDate}
+                  onChange={(e) =>
+                    setInvoiceData({
+                      ...invoiceData,
+                      invoiceDate: e.target.value,
+                    })
+                  }
+                  required
+                />
               </div>
-            )}
-            {extraItem ? (
-              <div class="mb-3">
-                <div className="row">
-                  <div className="col-md-11">
-                    <div class="row">
-                      <div class="col-md-4">
-                        <div class="input">
-                          <label class="form-label label" for="extraItemDesc">
-                            Desc:
-                          </label>
-                          <input
-                            type="text"
-                            placeholder="Bu alanı doldurun."
-                            value={extraItemDesc}
-                            onChange={(e) => setExtraItemDesc(e.target.value)}
-                          />
+              <div className="input ms-2 w-100">
+                <label htmlFor="dueDate" className="form-label label">
+                  Son Ödeme Tarihi:
+                </label>
+                <input
+                  type="date"
+                  id="dueDate"
+                  value={invoiceData.dueDate}
+                  onChange={(e) =>
+                    setInvoiceData({ ...invoiceData, dueDate: e.target.value })
+                  }
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="mb-3">
+              <h5 className="subtitle mb-2">Extra Öğe</h5>
+              {invoiceData.lineItems && (
+                <div>
+                  {invoiceData.lineItems.map((item, index) => (
+                    <ul className="mb-3" key={index}>
+                      <li className="d-flex justify-content-between align-items-center my-3">
+                        <div className="form-control border-0 label">
+                          <b>Desc:</b> {item.extraItemDesc}
                         </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="input">
-                          <label class="form-label label" for="extraItemAmount">
-                            Amount:
-                          </label>
-                          <input
-                            type="number"
-                            placeholder="Bu alanı doldurun."
-                            value={extraItemAmount}
-                            onChange={(e) => setExtraItemAmount(e.target.value)}
-                          />
+                        <div className="form-control border-0 ps-0 label">
+                          <b>Amount:</b> {item.extraItemAmount}
                         </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="input">
-                          <label class="form-label label" for="extraItemPrice">
-                            Price:
-                          </label>
-                          <input
-                            type="number"
-                            placeholder="Bu alanı doldurun."
-                            value={extraItemPrice}
-                            onChange={(e) => setExtraItemPrice(e.target.value)}
-                          />
+                        <div className="form-control border-0 ps-0 label">
+                          <b>Price:</b> {item.extraItemPrice}
+                        </div>
+                      </li>
+                    </ul>
+                  ))}
+                </div>
+              )}
+              {extraItem ? (
+                <div class="mb-3">
+                  <div className="row">
+                    <div className="col-md-11">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <div class="input">
+                            <label class="form-label label" for="extraItemDesc">
+                              Desc:
+                            </label>
+                            <input
+                              type="text"
+                              placeholder="Bu alanı doldurun."
+                              value={extraItemDesc}
+                              onChange={(e) => setExtraItemDesc(e.target.value)}
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="input">
+                            <label
+                              class="form-label label"
+                              for="extraItemAmount"
+                            >
+                              Amount:
+                            </label>
+                            <input
+                              type="number"
+                              placeholder="Bu alanı doldurun."
+                              value={extraItemAmount}
+                              onChange={(e) =>
+                                setExtraItemAmount(e.target.value)
+                              }
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="input">
+                            <label
+                              class="form-label label"
+                              for="extraItemPrice"
+                            >
+                              Price:
+                            </label>
+                            <input
+                              type="number"
+                              placeholder="Bu alanı doldurun."
+                              value={extraItemPrice}
+                              onChange={(e) =>
+                                setExtraItemPrice(e.target.value)
+                              }
+                            />
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="col-md-1 icon-area">
-                    {!extraItemDesc || !extraItemAmount || !extraItemPrice ? (
-                      <MdReplay
-                        class="icon icon-warning d-flex justify-content-center align-items-center"
-                        onClick={() => setExtraItem(false)}
-                      />
-                    ) : (
-                      <AiFillCheckCircle
-                        class="icon icon-success text-success d-flex justify-content-center align-items-center"
-                        onClick={handleAddItem}
-                      />
-                    )}
+                    <div className="col-md-1 icon-area">
+                      {!extraItemDesc || !extraItemAmount || !extraItemPrice ? (
+                        <MdReplay
+                          class="icon icon-warning d-flex justify-content-center align-items-center"
+                          onClick={() => setExtraItem(false)}
+                        />
+                      ) : (
+                        <AiFillCheckCircle
+                          class="icon icon-success text-success d-flex justify-content-center align-items-center"
+                          onClick={handleAddItem}
+                        />
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ) : (
-              <button
-                type="button"
-                className="primaryButton"
-                onClick={() => setExtraItem(true)}
+              ) : (
+                <button
+                  type="button"
+                  className="primaryButton"
+                  onClick={() => setExtraItem(true)}
+                >
+                  Satır Öğesi Ekle
+                </button>
+              )}
+            </div>
+
+            <div className="input">
+              <label htmlFor="notes" className="form-label label">
+                Notlar:
+              </label>
+              <textarea
+                id="notes"
+                placeholder="Bu alanı doldurun."
+                value={invoiceData.notes}
+                onChange={(e) =>
+                  setInvoiceData({ ...invoiceData, notes: e.target.value })
+                }
+              />
+            </div>
+
+            <div className="input">
+              <label htmlFor="paymentStatus" className="form-label label">
+                Ödeme Durumu:
+              </label>
+              <select
+                className="paymentStatus"
+                id="paymentStatus"
+                value={invoiceData.paymentStatus}
+                onChange={(e) =>
+                  setInvoiceData({
+                    ...invoiceData,
+                    paymentStatus: e.target.value,
+                  })
+                }
+                required
               >
-                Satır Öğesi Ekle
-              </button>
-            )}
-          </div>
-
-          <div className="input">
-            <label htmlFor="notes" className="form-label label">
-              Notlar:
-            </label>
-            <textarea
-              id="notes"
-              placeholder="Bu alanı doldurun."
-              value={invoiceData.notes}
-              onChange={(e) =>
-                setInvoiceData({ ...invoiceData, notes: e.target.value })
-              }
-            />
-          </div>
-
-          <div className="input">
-            <label htmlFor="paymentStatus" className="form-label label">
-              Ödeme Durumu:
-            </label>
-            <select
-              className="paymentStatus"
-              id="paymentStatus"
-              value={invoiceData.paymentStatus}
-              onChange={(e) =>
-                setInvoiceData({
-                  ...invoiceData,
-                  paymentStatus: e.target.value,
-                })
-              }
-              required
-            >
-              <option value="">Lütfen seçin</option>
-              <option value="paid">Ödenmiş</option>
-              <option value="unpaid">Ödenmemiş</option>
-              <option value="pending">Beklemede</option>
-            </select>
-          </div>
-          <button type="submit" className="secondaryButton my-2 w-100">
-            Faturayı Kaydet
-          </button>
-        </form>
+                <option value="">Lütfen seçin</option>
+                <option value="paid">Ödenmiş</option>
+                <option value="unpaid">Ödenmemiş</option>
+                <option value="pending">Beklemede</option>
+              </select>
+            </div>
+            <button type="submit" className="secondaryButton my-2 w-100">
+              Faturayı Kaydet
+            </button>
+          </form>
         </div>
       </div>
     </div>
