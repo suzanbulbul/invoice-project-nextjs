@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
 
 // Firebase
 import { sendInvoiceToFirebase } from '../firebase/firebase';
@@ -9,6 +10,7 @@ import { AiFillCheckCircle} from 'react-icons/ai';
 import { MdReplay} from 'react-icons/md';
 
 const InvoiceForm  = () => {
+  const { t } = useTranslation();
   const [extraItem, setExtraItem] = useState(false)
   const [extraItemDesc, setExtraItemDesc] = useState('');
   const [extraItemAmount, setExtraItemAmount] = useState('');
@@ -73,16 +75,16 @@ const InvoiceForm  = () => {
     <div className="invoiceForm">
       <div className="invoiceForm-container">
         <div className="invoiceForm-content">
-          <h2 className="title">Fatura Oluştur</h2>
+          <h2 className="title">{t('createInvoice')}</h2>
           <form onSubmit={handleSubmit}>
             <div className="input">
               <label htmlFor="customerName" className="form-label label">
-                Müşteri Adı:
+                {t('customerName')}:
               </label>
               <input
                 type="text"
                 id="customerName"
-                placeholder="Bu alanı doldurun."
+                placeholder={t('fillField')}
                 value={invoiceData.customerName}
                 onChange={(e) =>
                   setInvoiceData({
@@ -95,12 +97,12 @@ const InvoiceForm  = () => {
             </div>
             <div className="input">
               <label htmlFor="email" className="form-label label">
-                Email Adresi:
+                {t('emailAddress')}:
               </label>
               <input
                 type="email"
                 id="email"
-                placeholder="Bu alanı doldurun."
+                placeholder={t('fillField')}
                 value={invoiceData.email}
                 onChange={(e) =>
                   setInvoiceData({ ...invoiceData, email: e.target.value })
@@ -112,7 +114,7 @@ const InvoiceForm  = () => {
             <div className="d-flex justify-content-between align-items-center mb-3">
               <div className="input me-2 w-100">
                 <label htmlFor="invoiceDate" className="form-label label">
-                  Fatura Tarihi:
+                  {t('invoiceDate')}:
                 </label>
                 <input
                   type="date"
@@ -129,7 +131,7 @@ const InvoiceForm  = () => {
               </div>
               <div className="input ms-2 w-100">
                 <label htmlFor="dueDate" className="form-label label">
-                  Son Ödeme Tarihi:
+                  {t('dueDate')}:
                 </label>
                 <input
                   type="date"
@@ -144,20 +146,20 @@ const InvoiceForm  = () => {
             </div>
 
             <div className="mb-3">
-              <h5 className="subtitle mb-2">Extra Öğe</h5>
+              <h5 className="subtitle mb-2">{t('extraItem')}:</h5>
               {invoiceData.lineItems && (
                 <div>
                   {invoiceData.lineItems.map((item, index) => (
                     <ul className="mb-3" key={index}>
                       <li className="d-flex justify-content-between align-items-center my-3">
                         <div className="form-control border-0 label">
-                          <b>Desc:</b> {item.extraItemDesc}
+                          <b>{t('desc')}:</b> {item.extraItemDesc}
                         </div>
                         <div className="form-control border-0 ps-0 label">
-                          <b>Amount:</b> {item.extraItemAmount}
+                          <b>{t('amount')}:</b> {item.extraItemAmount}
                         </div>
                         <div className="form-control border-0 ps-0 label">
-                          <b>Price:</b> {item.extraItemPrice}
+                          <b>{t('price')}:</b> {item.extraItemPrice}
                         </div>
                       </li>
                     </ul>
@@ -172,11 +174,11 @@ const InvoiceForm  = () => {
                         <div class="col-md-4">
                           <div class="input">
                             <label class="form-label label" for="extraItemDesc">
-                              Desc:
+                            {t('desc')}:
                             </label>
                             <input
                               type="text"
-                              placeholder="Bu alanı doldurun."
+                              placeholder={t('fillField')}
                               value={extraItemDesc}
                               onChange={(e) => setExtraItemDesc(e.target.value)}
                             />
@@ -188,11 +190,11 @@ const InvoiceForm  = () => {
                               class="form-label label"
                               for="extraItemAmount"
                             >
-                              Amount:
+                              {t('amount')}:
                             </label>
                             <input
                               type="number"
-                              placeholder="Bu alanı doldurun."
+                              placeholder={t('fillField')}
                               value={extraItemAmount}
                               onChange={(e) =>
                                 setExtraItemAmount(e.target.value)
@@ -206,11 +208,11 @@ const InvoiceForm  = () => {
                               class="form-label label"
                               for="extraItemPrice"
                             >
-                              Price:
+                              {t('price')}:
                             </label>
                             <input
                               type="number"
-                              placeholder="Bu alanı doldurun."
+                              placeholder={t('fillField')}
                               value={extraItemPrice}
                               onChange={(e) =>
                                 setExtraItemPrice(e.target.value)
@@ -241,18 +243,18 @@ const InvoiceForm  = () => {
                   className="primaryButton"
                   onClick={() => setExtraItem(true)}
                 >
-                  Satır Öğesi Ekle
+                   {t('addLinItem')}:
                 </button>
               )}
             </div>
 
             <div className="input">
               <label htmlFor="notes" className="form-label label">
-                Notlar:
+                {t('notes')}:
               </label>
               <textarea
                 id="notes"
-                placeholder="Bu alanı doldurun."
+                placeholder={t('fillField')}
                 value={invoiceData.notes}
                 onChange={(e) =>
                   setInvoiceData({ ...invoiceData, notes: e.target.value })
@@ -262,7 +264,7 @@ const InvoiceForm  = () => {
 
             <div className="input">
               <label htmlFor="paymentStatus" className="form-label label">
-                Ödeme Durumu:
+              {t('paymentStatus')}::
               </label>
               <select
                 className="paymentStatus"
@@ -276,14 +278,14 @@ const InvoiceForm  = () => {
                 }
                 required
               >
-                <option value="">Lütfen seçin</option>
-                <option value="paid">Ödenmiş</option>
-                <option value="unpaid">Ödenmemiş</option>
-                <option value="pending">Beklemede</option>
+                <option value="">{t('pleaseSelect')}:</option>
+                <option value="paid">{t('paid')}</option>
+                <option value="unpaid">{t('unpaid')}</option>
+                <option value="pending">{t('pending')}</option>
               </select>
             </div>
             <button type="submit" className="secondaryButton my-2 w-100">
-              Faturayı Kaydet
+            {t('saveInvoice')}
             </button>
           </form>
         </div>

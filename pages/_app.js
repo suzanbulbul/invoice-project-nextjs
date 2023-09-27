@@ -1,6 +1,8 @@
 import React, {useEffect} from 'react';
 import Head from 'next/head';
 import { Toaster } from 'react-hot-toast';
+import '../i18n'
+
 
 //Components
 import Layout from '../components/layout';

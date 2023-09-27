@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 
 //Icons
 import { BsFillMoonFill, BsSun } from 'react-icons/bs';
@@ -7,6 +8,8 @@ import { CiMenuFries } from 'react-icons/ci';
 import { AiOutlineClose } from 'react-icons/ai';
 
 const Header = () => {
+  const { t, i18n } = useTranslation();
+
   const [darkMode, setDarkMode] = useState(false);
   const [language, setLanguage] = useState('en'); 
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -44,6 +47,7 @@ const Header = () => {
   };
 
   const handleLanguageChange = (e) => {
+    i18n.changeLanguage(e.target.value);
     setLanguage(e.target.value);
     handleMobileMenuItemClick(); 
   };
@@ -80,7 +84,7 @@ const Header = () => {
                   href="invoiceList"
                   onClick={handleMobileMenuItemClick}
                 >
-                  Invoice List
+                   {t('invoiceList')}
                 </Link>
               </li>
             </ul>

@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import Lottie from "lottie-react";
 import toast from "react-hot-toast";
+import { useTranslation } from 'react-i18next';
 
 
 // Helpers
@@ -11,6 +12,7 @@ import animationData from "../../public/animations/empty_list_animation.json";
 
 
 const InvoiceTable = ({invoices}) => {
+  const { t } = useTranslation();
 
   const [mailDesc, setMailDesc] = useState("");
 
@@ -29,7 +31,7 @@ const InvoiceTable = ({invoices}) => {
   if (invoices.length === 0) {
     return (
       <div className="invoice-table-empty">
-        <h1 className="desc">Fatura Listesinde fatura bulunamamaktadır.</h1>
+        <h1 className="desc">{t('emptyInvoiceListFatura')}</h1>
         <Lottie className="animation" animationData={animationData} />
       </div>
     );
@@ -46,10 +48,10 @@ const InvoiceTable = ({invoices}) => {
         <table className="table">
           <thead>
             <tr>
-              <th>Müşteri Adı</th>
-              <th>Fatura Tarihi</th>
-              <th>Son Ödeme Tarihi</th>
-              <th>Durum</th>
+              <th>{t('customerName')}</th>
+              <th>{t('invoiceDate')}</th>
+              <th>{t('dueDate')}</th>
+              <th>{t('status')}</th>
               <th></th>
             </tr>
           </thead>
@@ -72,7 +74,7 @@ const InvoiceTable = ({invoices}) => {
                     data-bs-toggle="modal"
                     data-bs-target={`#exampleModal${index}`}
                   >
-                    Send Mail
+                    {t('sendMail')}
                   </button>
                   <div
                     className="modal fade"
@@ -88,8 +90,7 @@ const InvoiceTable = ({invoices}) => {
                           <h1
                             className="modal-title desc m-0 text-capitalize"
                             id="exampleModalLabel"
-                          >
-                            Gönderilen Emial:
+                          >{t('sendEmail')}:
                             <b className="text-lowercase"> {invoice.email}</b>
                           </h1>
                           <button
@@ -103,7 +104,7 @@ const InvoiceTable = ({invoices}) => {
                           <form onSubmit={handleSubmit}>
                             <div className="mb-3 input">
                               <label htmlFor="mailDesc" className="label">
-                                E-Posta Açıklaması:
+                              {t('emailDesc')}:
                               </label>
                               <textarea
                                 id="mailDesc"
@@ -118,7 +119,7 @@ const InvoiceTable = ({invoices}) => {
                               data-bs-dismiss="modal"
                               aria-label="Close"
                             >
-                              Gönder
+                              {t('send')}
                             </button>
                           </form>
                         </div>
