@@ -3,10 +3,13 @@ import Link from 'next/link';
 
 //Icons
 import { BsFillMoonFill, BsSun } from 'react-icons/bs';
+import { CiMenuFries } from 'react-icons/ci';
+import { AiOutlineClose } from 'react-icons/ai';
 
 const Header = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [language, setLanguage] = useState('en'); // Dil seçeneği
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   useEffect(() => {
     const isDarkMode = localStorage.getItem('darkMode') === 'true';
@@ -28,55 +31,83 @@ const Header = () => {
     localStorage.setItem('language', language);
   }, [language]);
 
-
   const handleDarkModeToggle = () => {
     setDarkMode(!darkMode);
   };
 
+  const handleMobileMenuToggle = () => {
+    setShowMobileMenu(!showMobileMenu);
+  };
+
+  const handleMobileMenuItemClick = () => {
+    setShowMobileMenu(false);
+  };
+
+  const handleLanguageChange = (e) => {
+    setLanguage(e.target.value);
+    handleMobileMenuItemClick(); 
+  };
+
   return (
-    <header >
-      <nav className={`navbar navbar-expand-lg ${darkMode & "bg-dark"}`}>
+    <header>
+      <nav className={`navbar navbar-expand-lg ${darkMode ? "bg-dark" : ""}`}>
         <div className="container container-fluid p-2">
           <div className="d-flex align-items-center">
-            <Link className="navbar-brand subtitle m-0" href="/">
+            <Link className="navbar-brand subtitle m-0 me-3" href="/">
               INVOICE PROJECT
             </Link>
           </div>
-          <div>
+          <button
+            className={`btn d-md-none ${showMobileMenu ? "open" : ""}`}
+            type="button"
+            onClick={handleMobileMenuToggle}
+          >
+            <span className="burger-icon">
+              {showMobileMenu ? <AiOutlineClose /> : <CiMenuFries />}
+            </span>
+          </button>
+
+          <div
+            className={`collapse navbar-collapse ${
+              showMobileMenu ? "show" : ""
+            }`}
+          >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
+              <li className="nav-item text-center">
                 <Link
                   className="nav-link link"
                   aria-current="page"
                   href="invoiceList"
+                  onClick={handleMobileMenuItemClick}
                 >
                   Invoice List
                 </Link>
               </li>
+              {/* Diğer menü öğeleri buraya ekleyin */}
             </ul>
-          </div>
-          <div className="d-flex justify-content-between align-items-center">
-            <div className="dark-mode-toggle">
-              <input
-                type="checkbox"
-                id="darkModeSwitch"
-                checked={darkMode}
-                onChange={handleDarkModeToggle}
-              />
-              <label htmlFor="darkModeSwitch">
-                <div className="toggle-ball">
-                  {darkMode ? <BsFillMoonFill /> : <BsSun />}
-                </div>
-              </label>
+            <div className="d-flex justify-content-between  align-items-center item-area">
+              <div className="dark-mode-toggle">
+                <input
+                  type="checkbox"
+                  id="darkModeSwitch"
+                  checked={darkMode}
+                  onChange={handleDarkModeToggle}
+                />
+                <label htmlFor="darkModeSwitch">
+                  <div className="toggle-ball">
+                    {darkMode ? <BsFillMoonFill /> : <BsSun />}
+                  </div>
+                </label>
+              </div>
+              <select
+                className="form-select multi-lang ms-2 p-auto"
+                value={language}
+                onChange={handleLanguageChange} 
+              >
+                <option value="en">En</option>
+                <option value="tr">Tr</option>
+              </select>
             </div>
-            <select
-              className="form-select multi-lang ms-2 p-auto"
-              value={language}
-              onChange={(e) => setLanguage(e.target.value)}
-            >
-              <option value="en">En</option>
-              <option value="tr">Tr</option>
-            </select>
           </div>
         </div>
       </nav>

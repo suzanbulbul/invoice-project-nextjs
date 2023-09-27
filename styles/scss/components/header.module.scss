@@ -41,9 +41,31 @@ header{
         }
     }
     .multi-lang{
+      width: auto;
         &:focus, &:hover, &:active{
             border-color:$primary-color;
             box-shadow: 0 6px 24px 0 $primary-color;
         }
     }
+
+    .item-area{
+      @media (max-width: 768px) {
+        justify-content: center!important;
+      }
+    }
+    .btn {
+      background: none;
+      padding: auto;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease; /* Geçiş efekti */
+    }
+    
+    /* Açık durum için stil */
+    .btn.open {
+      background-color: $dark-light; /* Örnek olarak kırmızı arka plan rengi */
+      color: #fff; /* Örnek olarak beyaz metin rengi */
+    }
+  
 }
