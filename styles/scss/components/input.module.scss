@@ -1,0 +1,45 @@
+.input{
+    width: 100%;
+    position: relative;
+
+    margin-bottom: 30px;
+
+    input, textarea, select{
+        width: 100%;
+
+        border: 2px solid #CFCDCD;
+        border-radius: 50px; 
+
+        font-size: 16px;
+        color: $gray;
+
+        font-style: normal;
+        font-weight: 700;
+
+        padding: 10px 20px;
+        margin-top: 5px;
+        outline: none; 
+        
+        &:focus{
+            color: $primary-color;
+            font-weight: 700;
+            border-bottom: 3px solid $primary-color;
+        }
+        &::placeholder{
+            color: $gray;
+            font-weight: 500;
+        }
+        &.error {
+            border: 2px solid $warning;
+          }
+      
+        &.success {
+            border: 2px solid $success;
+        }
+      
+    }
+    textarea{
+        border-radius: 20px;
+    }
+
+}

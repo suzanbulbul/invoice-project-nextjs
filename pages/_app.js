@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import Head from 'next/head';
+import { Toaster } from 'react-hot-toast';
 
 //Components
 import Layout from '../components/layout';
@@ -20,6 +21,7 @@ function MyApp({ Component, pageProps }) {
         <title>INVOICE PROJECT</title>
       </Head>
       <Component {...pageProps} />
+      <Toaster />
     </Layout>
   );
 }

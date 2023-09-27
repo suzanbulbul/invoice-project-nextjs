@@ -1,0 +1,33 @@
+.invoice-table {   
+    overflow-y: auto;
+    overflow-x: auto;
+
+    .table-responsive {
+        border: 2px solid $primary-color;
+        padding: 20px;
+        border-radius: 20px;
+        min-width: 800px;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+        thead{
+        border-color: $primary-color;
+        }
+      td{
+        border-bottom-width: none;
+        border-bottom: none
+      }
+      
+      th, td {
+        text-transform: uppercase;
+        padding: 24px;
+        text-align: left;
+      }
+      #status{
+        font-weight: 700;
+      }
+ 
+}
+  

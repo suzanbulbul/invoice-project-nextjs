@@ -22,13 +22,10 @@ const InvoiceList = () => {
       });
   }, []);
 
-  const getInvoiceStatus = (invoice) => {
- return 'Ödenmemiş';
-  };
 
   return (
     <div className="container mt-5">
-      <h2>Fatura Listesi</h2>
+      <h2 className="title">Fatura Listesi</h2>
       {loading ? (
         <div>Loading...</div>
       ) : (

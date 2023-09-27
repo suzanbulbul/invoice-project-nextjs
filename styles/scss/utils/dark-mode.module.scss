@@ -1,0 +1,133 @@
+.dark-mode {
+  background-color: $dark-blue;
+  color: white!important;
+
+  // Typography
+  .title, .subtitle,  .desc, .label, .link {
+    color: $gray;
+  }
+  .label{
+    background: transparent;
+  }
+
+  //Buttons
+  .primaryButton{
+    border: 1px solid $dark-yellow;
+    color: $dark-yellow;
+
+    &:hover{
+      background: $dark-yellow;
+      color: $dark-blue;
+    }
+  }
+  .secondaryButton{
+    color: $dark-blue;
+    background-color: $dark-yellow;
+
+
+    &:hover{
+      box-shadow: 0 6px 24px 0 $dark-yellow;
+      background: $dark-yellow;
+    }
+  }
+  //Inputs
+  input, textarea, select{
+    background-color: $dark-light;
+    color: $dark-blue!important;
+
+    &:focus{
+      color: $dark-yellow!important;
+      border-bottom: 3px solid $dark-yellow!important;
+    }
+    
+    .input{
+      color: $dark-blue!important;
+    }
+    option {
+      color: $dark-blue!important;
+    }
+  } 
+
+  //Header
+  header{
+    background-color: $dark-gray;
+    .subtitle{
+      color: $dark-sky-blue;
+    } 
+    .link {
+      color: $dark-sky-blue!important;
+
+      &::after {
+          background: $dark-yellow!important;
+      }
+
+      &:hover {
+          color: $dark-yellow!important;
+      }
+    }
+    .multi-lang{
+      color: $dark-gray;
+      &:focus{
+        border-color:transparent!important;
+        box-shadow: none;
+      }
+      &:hover, &:active{
+          border-color:$dark-yellow;
+          box-shadow: 0 6px 24px 0 $dark-yellow;
+      }
+  }
+  }
+  //dark-mode-toggle
+  .dark-mode-toggle {
+    label {
+      background-color: $dark-light;
+
+      .toggle-ball {
+        background-color: $dark-blue; // Top rengini istediğiniz renkle değiştirin
+        border: 2px solid $dark-yellow;
+
+        svg {
+            font-size: 16px;
+            position: relative;
+            color: $dark-yellow;
+            top: -2px;
+            left: 6px;
+        }
+      }
+    }
+  }
+
+  //Sections
+  .invoiceForm{ 
+    background-color: $dark-blue;
+
+    &-container{
+      background-color: $dark-gray;
+    }
+
+    .icon-success{
+      color: $dark-sky-blue!important;
+    }
+
+  }
+  .invoice-table{
+    background-color: $dark-gray;
+
+    .table-responsive{
+      border: 2px solid $dark-yellow;
+    }
+    thead {
+      border-color: $dark-yellow;
+    }
+    
+
+    th, td{
+      background-color: $dark-gray;
+      color: $dark-light;
+    }
+	
+
+  }
+
+
+}

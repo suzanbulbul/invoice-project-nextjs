@@ -1,54 +1,87 @@
-import React, { useState, useEffect } from 'react'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 //Icons
-import { BsFillMoonFill, BsSun } from 'react-icons/bs'
+import { BsFillMoonFill, BsSun } from 'react-icons/bs';
 
 const Header = () => {
-  const router = useRouter()
-  const [darkModu, setDarkModu] = useState(false)
+  const [darkMode, setDarkMode] = useState(false);
+  const [language, setLanguage] = useState('en'); // Dil seçeneği
 
-    // Dark modu değiştiğinde body elementine sınıf ekleyin/çıkarın
-    useEffect(() => {
-      const bodyElement = document.body;
-      if (darkModu) {
-        bodyElement.classList.add('dark-mode');
-      } else {
-        bodyElement.classList.remove('dark-mode');
-      }
-    }, [darkModu]);
+  useEffect(() => {
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    setDarkMode(isDarkMode);
+  }, []);
 
-    const handleDarkModeToggle = () => {
-      setDarkModu(!darkModu);
-    };
+  useEffect(() => {
+    const bodyElement = document.body;
+    if (darkMode) {
+      bodyElement.classList.add('dark-mode');
+      localStorage.setItem('darkMode', 'true');
+    } else {
+      bodyElement.classList.remove('dark-mode');
+      localStorage.setItem('darkMode', 'false');
+    }
+  }, [darkMode]);
+
+  useEffect(() => {
+    localStorage.setItem('language', language);
+  }, [language]);
+
+
+  const handleDarkModeToggle = () => {
+    setDarkMode(!darkMode);
+  };
 
   return (
     <header>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
-        <div className="container container-fluid">
-          <Link className="navbar-brand" href="/">
-            INVOICE PROJECT
-          </Link>
-          <div className="">
+      <nav className={`navbar navbar-expand-lg ${darkMode & "bg-dark"}`}>
+        <div className="container container-fluid p-2">
+          <div className="d-flex align-items-center">
+            <Link className="navbar-brand subtitle m-0" href="/">
+              INVOICE PROJECT
+            </Link>
+          </div>
+          <div>
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" href="/">
-                  Home
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" href="invoiceList">
-                  InvoiceList
+                <Link
+                  className="nav-link link"
+                  aria-current="page"
+                  href="invoiceList"
+                >
+                  Invoice List
                 </Link>
               </li>
             </ul>
           </div>
-          <button onClick={() => setDarkModu(!darkModu)}>{darkModu ? <BsFillMoonFill />: <BsSun />}</button>
+          <div className="d-flex justify-content-between align-items-center">
+            <div className="dark-mode-toggle">
+              <input
+                type="checkbox"
+                id="darkModeSwitch"
+                checked={darkMode}
+                onChange={handleDarkModeToggle}
+              />
+              <label htmlFor="darkModeSwitch">
+                <div className="toggle-ball">
+                  {darkMode ? <BsFillMoonFill /> : <BsSun />}
+                </div>
+              </label>
+            </div>
+            <select
+              className="form-select multi-lang ms-2 p-auto"
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+            >
+              <option value="en">En</option>
+              <option value="tr">Tr</option>
+            </select>
+          </div>
         </div>
       </nav>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

@@ -1,0 +1,65 @@
+.title{
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 40px;
+    @media (max-width: 767px) {
+        font-size: 25px;
+        margin-bottom: 25px;
+    }
+}
+.subtitle{
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 20px;
+    @media (max-width: 767px) {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+}
+.desc{
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+.label{
+    color: $gray;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    margin: 0;
+}
+
+.link {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 0px;
+    color: $gray;
+    position: relative; /* Ebeveyn öğeye göre pozisyon ayarlayın */
+
+    &::after {
+        content: '';
+        width: 0; /* Başlangıçta çizgiyi gizleyin */
+        height: 2px; /* Çizgi kalınlığını ayarlayın */
+        background: $primary-color!important;
+        margin-top: 5px;
+        position: absolute;
+        left: 0; /* Soldan başlayacak */
+        bottom: 0;
+        transition: width 0.3s ease; /* Geçiş efektini ayarlayın */
+    }
+
+    &:hover {
+        color: $primary-color!important;
+
+        &::after {
+            width: 100%; /* Hover durumunda çizgiyi tam genişlikte gösterin */
+        }
+    }
+}
