@@ -96,6 +96,14 @@
       }
     }
   }
+  //Modal
+  .modal{
+    &-content{
+      background-color: $dark-gray;
+      color: $dark-light;
+    }
+
+  }
 
   //Sections
   .invoiceForm{ 

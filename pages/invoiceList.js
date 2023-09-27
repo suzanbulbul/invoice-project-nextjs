@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 
 // Firebase
 import { getInvoices } from "../firebase/firebase";
@@ -26,7 +27,11 @@ const InvoiceList = () => {
 
   return (
     <div className="container mt-5">
-      <h2 className="title">Fatura Listesi</h2>
+      <div className="d-flex justify-content-between align-items-start">
+         <h2 className="title">Fatura Listesi</h2>
+        <Link href="/" className="secondaryButton">Fatura Ekle</Link>
+      </div>
+     
       {loading ? (
         <Loading />
       ) : (

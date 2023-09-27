@@ -1,18 +1,20 @@
 .invoice-table {   
-    overflow-y: auto;
-    overflow-x: auto;
+  overflow-y: auto;
+  overflow-x: auto; 
 
     .table-responsive {
         border: 2px solid $primary-color;
         padding: 20px;
         border-radius: 20px;
-        min-width: 700px;
+        width: auto;
+        min-width: 1000px;
+        height: 800px;
     }
     table {
         border-collapse: collapse;
         width: 100%;
       }
-        thead{
+        thead {
         border-color: $primary-color;
         }
       td{
