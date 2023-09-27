@@ -5,29 +5,61 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 768px) {
+      height: calc(100vh - 108px);
+    }
     
     &-container{
-        width: 700px;
+        overflow-y: auto;
         margin: 0 auto;
         padding: 40px;
         border-radius: 20px;
         background-color: white;
         box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
         transition: box-shadow 0.3s ease;
+
+        @media (max-width: 768px) {
+          width: auto;
+          margin: 5px;
+          padding: 20px;
+        }
     }
 
-    .icon{
-      font-size: 5rem;
-      margin-left: 25px;
-      position: relative;
-      bottom: 2px;
+    &-content{
+      max-width: 700px;
+      width: auto;
+      max-height: 800px;
+      @media (max-width: 768px) {
+        max-height: 600px;
+      }
+    }
+    .icon-area{
+        @media (max-width: 768px) {
+          margin-top: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
 
-      &-success{
-        color: $green;
+      .icon{
+        font-size: 35px;
+        position: relative;
+        bottom: -33px;
+        @media (max-width: 768px) {
+          font-size: 25px;
+          position: initial;
+          bottom: initial;
+        }
+        &-success{
+          color: $green;
+        }
+        &-warning{
+          color: $warning;
+        }
       }
-      &-warning{
-        color: $warning;
-      }
+
+  
     }
 
     select {

@@ -72,9 +72,10 @@ const InvoiceForm  = () => {
   return (
     <div className="invoiceForm">
       <div className="invoiceForm-container">
+        <div className="invoiceForm-content">
         <h2 className="title">Fatura Oluştur</h2>
         <form onSubmit={handleSubmit}>
-          <div className="mb-3 input">
+          <div className="input">
             <label htmlFor="customerName" className="form-label label">
               Müşteri Adı:
             </label>
@@ -89,7 +90,7 @@ const InvoiceForm  = () => {
               required
             />
           </div>
-          <div className="mb-3 input">
+          <div className="input">
             <label htmlFor="email" className="form-label label">
               Email Adresi:
             </label>
@@ -123,7 +124,8 @@ const InvoiceForm  = () => {
                 required
               />
             </div>
-            <div className="input ms-2 w-100">
+            <div className='col-md-6'>
+                <div className="input ms-2 w-100">
               <label htmlFor="dueDate" className="form-label label">
                 Son Ödeme Tarihi:
               </label>
@@ -137,6 +139,8 @@ const InvoiceForm  = () => {
                 required
               />
             </div>
+            </div>
+          
           </div>
 
           <div className="mb-3">
@@ -145,8 +149,8 @@ const InvoiceForm  = () => {
               <div>
                 {invoiceData.lineItems.map((item, index) => (
                   <ul className='mb-3' key={index}>
-                    <li className="d-flex justify-content-between align-items-center my-3">
-                      <div className="form-control border-0 label">
+                     <li className="d-flex justify-content-between align-items-center my-3">
+                       <div className="form-control border-0 label">
                         <b>Desc:</b> {item.extraItemDesc}
                       </div>
                       <div className="form-control border-0 ps-0 label">
@@ -161,58 +165,64 @@ const InvoiceForm  = () => {
               </div>
             )}
             {extraItem ? (
-              <div className="mb-3">
-                <div className="d-flex justify-content-between align-items-center">
-                  <div className="input w-100">
-                    <label className="form-label label" htmlFor="extraItemDesc">
-                      Desc:
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Bu alanı doldurun."
-                      value={extraItemDesc}
-                      onChange={(e) => setExtraItemDesc(e.target.value)}
-                    />
+              <div class="mb-3">
+                <div className="row">
+                  <div className="col-md-11">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="input">
+                          <label class="form-label label" for="extraItemDesc">
+                            Desc:
+                          </label>
+                          <input
+                            type="text"
+                            placeholder="Bu alanı doldurun."
+                            value={extraItemDesc}
+                            onChange={(e) => setExtraItemDesc(e.target.value)}
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="input">
+                          <label class="form-label label" for="extraItemAmount">
+                            Amount:
+                          </label>
+                          <input
+                            type="number"
+                            placeholder="Bu alanı doldurun."
+                            value={extraItemAmount}
+                            onChange={(e) => setExtraItemAmount(e.target.value)}
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="input">
+                          <label class="form-label label" for="extraItemPrice">
+                            Price:
+                          </label>
+                          <input
+                            type="number"
+                            placeholder="Bu alanı doldurun."
+                            value={extraItemPrice}
+                            onChange={(e) => setExtraItemPrice(e.target.value)}
+                          />
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="input w-100 mx-2">
-                    <label
-                      className="form-label label"
-                      htmlFor="extraIteextraItemAmountmAmount"
-                    >
-                      Amount:
-                    </label>
-                    <input
-                      type="number"
-                      placeholder="Bu alanı doldurun."
-                      value={extraItemAmount}
-                      onChange={(e) => setExtraItemAmount(e.target.value)}
-                    />
+                  <div className="col-md-1 icon-area">
+                    {!extraItemDesc || !extraItemAmount || !extraItemPrice ? (
+                      <MdReplay
+                        class="icon icon-warning d-flex justify-content-center align-items-center"
+                        onClick={() => setExtraItem(false)}
+                      />
+                    ) : (
+                      <AiFillCheckCircle
+                        class="icon icon-success text-success d-flex justify-content-center align-items-center"
+                        onClick={handleAddItem}
+                      />
+                    )}
                   </div>
-                  <div className="input w-100">
-                    <label
-                      className="form-label label"
-                      htmlFor="extraItemPrice"
-                    >
-                      Price:
-                    </label>
-                    <input
-                      type="number"
-                      placeholder="Bu alanı doldurun."
-                      value={extraItemPrice}
-                      onChange={(e) => setExtraItemPrice(e.target.value)}
-                    />
-                  </div>
-                  {!extraItemDesc || !extraItemAmount || !extraItemPrice ? (
-                    <MdReplay
-                      className="icon icon-warning d-flex justify-content-center align-items-center"
-                      onClick={() => setExtraItem(false)}
-                    />
-                  ) : (
-                    <AiFillCheckCircle
-                      className="icon icon-success text-success d-flex justify-content-center align-items-center"
-                      onClick={handleAddItem}
-                    />
-                  )}
                 </div>
               </div>
             ) : (
@@ -226,7 +236,7 @@ const InvoiceForm  = () => {
             )}
           </div>
 
-          <div className="mb-3 input">
+          <div className="input">
             <label htmlFor="notes" className="form-label label">
               Notlar:
             </label>
@@ -240,12 +250,12 @@ const InvoiceForm  = () => {
             />
           </div>
 
-          <div className="mb-3 input">
+          <div className="input">
             <label htmlFor="paymentStatus" className="form-label label">
               Ödeme Durumu:
             </label>
             <select
-              className='paymentStatus'
+              className="paymentStatus"
               id="paymentStatus"
               value={invoiceData.paymentStatus}
               onChange={(e) =>
@@ -262,10 +272,11 @@ const InvoiceForm  = () => {
               <option value="pending">Beklemede</option>
             </select>
           </div>
-          <button type="submit" className="secondaryButton w-100">
-            Faturayı Gönder
+          <button type="submit" className="secondaryButton my-2 w-100">
+            Faturayı Kaydet
           </button>
         </form>
+        </div>
       </div>
     </div>
   );

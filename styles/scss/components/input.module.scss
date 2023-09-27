@@ -4,6 +4,10 @@
 
     margin-bottom: 30px;
 
+    @media (max-width: 768px) {
+        margin-bottom: 10px;
+    }
+
     input, textarea, select{
         width: 100%;
 
@@ -19,6 +23,11 @@
         padding: 10px 20px;
         margin-top: 5px;
         outline: none; 
+
+        @media (max-width: 768px) {
+            font-size: 14px;
+            padding: 5px 10px;
+        }
         
         &:focus{
             color: $primary-color;

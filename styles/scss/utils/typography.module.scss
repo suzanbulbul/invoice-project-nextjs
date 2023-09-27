@@ -26,6 +26,9 @@
     font-weight: 500;
     line-height: normal;
     margin-bottom: 20px;
+    @media (max-width: 768px) {
+        font-size: 15px;
+    }
 }
 
 .label{
@@ -34,6 +37,9 @@
     font-style: normal;
     font-weight: 400;
     margin: 0;
+    @media (max-width: 768px) {
+        font-size: 14px;
+    }
 }
 
 .link {
@@ -41,7 +47,11 @@
     font-weight: 700;
     margin-bottom: 0px;
     color: $gray;
-    position: relative; /* Ebeveyn öğeye göre pozisyon ayarlayın */
+    position: relative;
+
+    @media (max-width: 768px) {
+        font-size: 14px;
+    }
 
     &::after {
         content: '';
@@ -59,7 +69,7 @@
         color: $primary-color!important;
 
         &::after {
-            width: 100%; /* Hover durumunda çizgiyi tam genişlikte gösterin */
+            width: 100%;
         }
     }
 }
