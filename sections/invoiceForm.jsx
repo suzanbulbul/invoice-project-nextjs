@@ -167,13 +167,13 @@ const InvoiceForm  = () => {
                 </div>
               )}
               {extraItem ? (
-                <div class="mb-3">
+                <div className="mb-3">
                   <div className="row">
                     <div className="col-md-11">
-                      <div class="row">
-                        <div class="col-md-4">
-                          <div class="input">
-                            <label class="form-label label" for="extraItemDesc">
+                      <div className="row">
+                        <div className="col-md-4">
+                          <div className="input">
+                            <label className="form-label label" for="extraItemDesc">
                             {t('desc')}:
                             </label>
                             <input
@@ -184,10 +184,10 @@ const InvoiceForm  = () => {
                             />
                           </div>
                         </div>
-                        <div class="col-md-4">
-                          <div class="input">
+                        <div className="col-md-4">
+                          <div claclassNamess="input">
                             <label
-                              class="form-label label"
+                              className="form-label label"
                               for="extraItemAmount"
                             >
                               {t('amount')}:
@@ -202,8 +202,8 @@ const InvoiceForm  = () => {
                             />
                           </div>
                         </div>
-                        <div class="col-md-4">
-                          <div class="input">
+                        <div className="col-md-4">
+                          <div className="input">
                             <label
                               class="form-label label"
                               for="extraItemPrice"
