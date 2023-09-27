@@ -20,7 +20,7 @@ export const sendInvoiceToFirebase = async (invoiceData) => {
     const invoicesCollection = collection(db, 'invoices');
 
     const docRef = await addDoc(invoicesCollection, invoiceData);
-    console.log('Fatura Firestore\'a başarıyla eklendi, ID:', docRef.id);
+    console.log('Fatura Firestore\'a başarıyla eklendi');
   } catch (error) {
     console.error('Fatura eklenirken hata oluştu:', error);
     throw error;

@@ -29,7 +29,6 @@ const InvoiceForm  = () => {
 
     try{
         if (extraItemDesc && extraItemAmount && extraItemPrice) {
-          console.log("Yeni item:", extraItemDesc, extraItemAmount, extraItemPrice);
           const newItem = { extraItemDesc, extraItemAmount, extraItemPrice };
           setInvoiceData((prevData) => ({
             ...prevData,

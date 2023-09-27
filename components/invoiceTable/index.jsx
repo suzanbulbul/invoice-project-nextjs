@@ -9,8 +9,7 @@ import  dateFormat  from "../../utilities/helpers/dateFormat";
 import animationData from "../../public/animations/empty_list_animation.json"; 
 
 
-const InvoiceTable = () => {
-  const invoices = []
+const InvoiceTable = ({invoices}) => {
 
   const getStatusColor = (status) => {
     if (status === "paid") {
